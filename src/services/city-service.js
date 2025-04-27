@@ -1,55 +1,51 @@
-const {CityRepository} = require('../repository/index');
-
-
+const { CityRepository } = require("../repository/index");
 
 class CityService {
-    constructor() {
-        this.cityRepository = new CityRepository();
-    }
+  constructor() {
+    this.cityRepository = new CityRepository();
+  }
 
-    async createCity(data ) {
-        try {
-            const city = await this.cityRepository.createCity(data);
+  async createCity(data) {
+    try {
+      const city = await this.cityRepository.createCity(data);
+    } catch (error) {
+      console.error("Error in service layer:", error);
 
-        } catch (error) {
-            console.error("Error in service layer:", error);
-            
-            throw {error}
-            
-        }
+      throw { error };
     }
-    async deleteCity(cityId) {
-        try {
-            const response = await this.cityRepository.deleteCity(cityId);
-        } catch (error) {
-            console.error("Error in service layer:", error);
-            
-            throw {error}
-            
-        }
+  }
+
+  async deleteCity(cityId) {
+    try {
+      const response = await this.cityRepository.deleteCity(cityId);
+    } catch (error) {
+      console.error("Error in service layer:", error);
+
+      throw { error };
     }
-    async updateCity(cityId, data) {
-        try {
-            const city = await this.cityRepository.updateCity(cityId, data);
-            return city;
-        } catch (error) {
-            console.error("Error in service layer:", error);
-            
-            throw {error}
-            
-        }
+  }
+
+  async updateCity(cityId, data) {
+    try {
+      const city = await this.cityRepository.updateCity(cityId, data);
+      return city;
+    } catch (error) {
+      console.error("Error in service layer:", error);
+
+      throw { error };
     }
-    async getCity(cityId) {
-        try {
-            const city = await this.cityRepository.getCity(cityId);
-            return city
-        } catch (error) {
-            console.error("Error in service layer:", error);
-            
-            throw {error}
-            
-        }
+  }
+  
+  async getCity(cityId) {
+    try {
+      const city = await this.cityRepository.getCity(cityId);
+      return city;
+    } catch (error) {
+      console.error("Error in service layer:", error);
+
+      throw { error };
     }
+  }
 }
 
 module.exports = CityService;
