@@ -1,4 +1,4 @@
-const { City } = require("../models/city");
+const { City } = require("../models");
 
 class CityRepository {
   async createCity({ name }) {
@@ -18,7 +18,7 @@ class CityRepository {
       const city = await City.destroy({
         where: {
           id: cityId,
-        },
+        },  
       });
       return true;
     } catch (error) {

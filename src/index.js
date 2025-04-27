@@ -2,6 +2,9 @@ const express = require("express");
 const bodyparser = require("body-parser");
 
 const { PORT } = require("./config/ServerConfig.js");
+
+const ApiRoutes = require("./routes/index.js");
+
 const CityRepository = require("./repository/city-repository.js");
 
 const setupAndStartServer = async () => {
@@ -10,6 +13,8 @@ const setupAndStartServer = async () => {
 
   app.use(bodyparser.json());
   app.use(bodyparser.urlencoded({ extended: true }));
+
+   app.use("/api", ApiRoutes);
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

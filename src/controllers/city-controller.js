@@ -1,10 +1,10 @@
- const { response } = require("express");
+//  const { response } = require("express");
 const {CityService} = require("../services/index");
 
  const cityService = new CityService();
 
  // path -> /city -> req.body
- const create =  async (resq, res) =>{
+ const create =  async (req, res) =>{
     try {
         const city = await cityService.createCity(req.body);
         return res.status(201).json({
@@ -26,7 +26,7 @@ const {CityService} = require("../services/index");
  }
 
  // path -> /city/:id ->req.params
- const destroy = async(resq, res) =>{
+ const destroy = async(req, res) =>{
     try {
         const city = await cityService.deleteCity(req.params.id);
         return res.status(201).json({
@@ -47,7 +47,7 @@ const {CityService} = require("../services/index");
  }
 
  //path -> /city/:id ->req.params
- const get =  async (resq, res) =>{
+ const get =  async (req, res) =>{
     try {
         const city = await cityService.getCity(req.params.id);
         return res.status(201).json({
@@ -68,7 +68,7 @@ const {CityService} = require("../services/index");
  }
 
  // path -> /city/:id ->req.body
- const update = async (resq, res) =>{
+ const update = async (req, res) =>{
     try {
         const city = await cityService.updateCity(req.params.id,req.body);
         return res.status(201).json({

@@ -8,6 +8,7 @@ class CityService {
   async createCity(data) {
     try {
       const city = await this.cityRepository.createCity(data);
+      return city;
     } catch (error) {
       console.error("Error in service layer:", error);
 
@@ -35,7 +36,7 @@ class CityService {
       throw { error };
     }
   }
-  
+
   async getCity(cityId) {
     try {
       const city = await this.cityRepository.getCity(cityId);
